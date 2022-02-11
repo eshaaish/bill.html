@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bill of products</title>
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>BILL</h1>
+    </header>
+    <script type="text/javascript">
+        function bill() {
+            var pc =
+            {
+                1: 2.98,
+                2: 4.50,
+                3: 9.98,
+                4: 4.49,
+                5: 6.87
+            }
+            var prod = [];
+            var qt = [];
+            var c = getOrder(prod, qt);
+            var i = 0;
+            var tA = 0;
+            var displayText = "<table cellspacing=\"3\"><tr><td>ProductID</td ><td>Quantity</td><td>Cost</td><td></tr>";
+            var cost = 0;
+            for (i = 0; i < c; i++) {
+                cost = qt[i] * pc[prod[i]];
+                tA += cost;
+                displayText += "<tr><td>" + prod[i] + "</td><td>" + qt[i] +
+                    "</td><td>$" + cost + "</td><td></tr>";
+            }
+            displayText += "<tr><td>Total Cost</td><td>&nbsp;</td><td>$" +
+                tA + "</td><td></tr></table>";
+            document.getElementById("content").innerHTML = displayText;
+        }
+        function getOrder(prod, qt) {
+            var proC = 0;
+            var input;
+            var quant = 0;
+            var f = 1;
+            while (f == 1) {
+                input = prompt("Enter Product ID or 6 to exit: ");
+                input = parseInt(input);
+                if (input < 1 || input > 6) {
+                    window.alert("wrong product number");
+                }
+                else {
+                    switch (input) {
+                        case 1:
+                            prod[proC] = input;
+                            quant = prompt("Enter Quantity for Product " + input + ": ");
+                            qt[proC] = quant;
+                            proC++;
+                            break;
+                        case 2:
+                            prod[proC] = input;
+                            quant = prompt("Enter Quantity for Product " + input + ": ");
+                            qt[proC] = quant;
+                            proC++;
+                            break;
+                        case 3:
+                            prod[proC] = input;
+                            quant = prompt("Enter Quantity for Product " + input + ": ");
+                            qt[proC] = quant;
+                            proC++;
+                            break;
+                        case 4:
+                            prod[proC] = input;
+                            quant = prompt("Enter Quantity for Product " + input + ": ");
+                            qt[proC] = quant;
+                            proC++;
+                            break;
+                        case 5:
+                            prod[proC] = input;
+                            quant = prompt("Enter Quantity for Product " + input + ": ");
+                            qt[proC] = quant;
+                            proC++;
+                            break;
+                        case 6:
+                            f = -1;
+                            break;
+                    }
+                }
+            }
+            return proC;
+        }
+    </script>
+
+    <div id="content">
+    </div>
+    <script>
+        bill();
+    </script>
+</body>
+
+</html>
